@@ -1,45 +1,35 @@
-echo "Enter a number"
-
-read num
-
-if [ $num -eq 1 ]
+if [ $# -eq 0 ]
 
 then
 
-echo "1 is not a prime number"
+echo "Error! Please provide a number"
 
-else
+exit 1
+
+fi
+
+N=$1
 
 i=2
 
-count=0
-
-while [ $i -lt $num ]
+while [ $i -lt $N ]
 
 do
 
-if [ `expr $num % $i` -eq 0 ]
+if [ $(($N%$i)) -eq 0 ]
 
 then
 
-count=1
+echo $i
 
-fi
-
-i=`expr $i + 1`
-
-done
-
-if [ $count -eq 0 ]
-
-then
-
-echo "$num is a prime number"
+N=$(($N/$i))
 
 else
 
-echo "$num is not a prime number"
+i=$(($i+1))
 
 fi
 
-fi
+done
+
+echo $N
