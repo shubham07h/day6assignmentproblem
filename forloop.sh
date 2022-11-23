@@ -1,35 +1,15 @@
-if [ $# -eq 0 ]
-
+if [ $# -ne 1 ]
 then
-
-echo "Error! Please provide a number"
-
-exit 1
-
-fi
-
-N=$1
-
-i=2
-
-while [ $i -lt $N ]
-
-do
-
-if [ $(($N%$i)) -eq 0 ]
-
-then
-
-echo $i
-
-N=$(($N/$i))
+echo "Error: Enter only one number"
 
 else
 
-i=$(($i+1))
-
+for (( i=1;i<=256;i++ ))
+do
+p=$(($i*$i))
+if [ $p -le $1 ]
+then
+echo $p
 fi
-
 done
-
-echo $N
+fi
