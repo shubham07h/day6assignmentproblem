@@ -1,20 +1,20 @@
-head=1
-tail=0
+start=100
+goal=200
+bets=0
+wins=0
 
-while [ $head -ne 11 ] && [ $tail -ne 11 ]
+while [ $start -gt 0 ] && [ $start -lt $goal ]
 do
-        rand=$((RANDOM%2))
-        if [ $rand -eq 1 ]
-        then
-                ((head++))
-        else
-                ((tail++))
-        fi
+    if [ $((RANDOM%2)) -eq 1 ]
+    then
+        echo "win"
+        ((wins++))
+    else
+        echo "loss"
+    fi
+    ((bets++))
+    ((start--))
 done
 
-if [ $head -eq 11 ]
-then
-        echo "Head Wins"
-else
-        echo "Tail Wins"
-fi
+echo "total bets:$bets"
+echo "total wins:$wins"
