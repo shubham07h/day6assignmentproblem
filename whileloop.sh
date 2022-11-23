@@ -1,22 +1,20 @@
-echo "Think of a number between 1 and 100"
-read num
+head=1
+tail=0
 
-while [ 1 ]
+while [ $head -ne 11 ] && [ $tail -ne 11 ]
 do
-	echo "Is your number less than $((num/2)) or greater? Enter 'less' or 'greater'"
-	read input
-	if [ $input == "less" ]
-	then
-		num=$((num/2))
-	elif [ $input == "greater" ]
-	then
-		num=$(((num/2)+num))
-	else
-		echo "Please enter either 'less' or 'greater'"
-	fi
-	if [ $num -eq 50 ]
-	then
-		echo "Your number is 50. Congratulations!"
-		break
-	fi
+        rand=$((RANDOM%2))
+        if [ $rand -eq 1 ]
+        then
+                ((head++))
+        else
+                ((tail++))
+        fi
 done
+
+if [ $head -eq 11 ]
+then
+        echo "Head Wins"
+else
+        echo "Tail Wins"
+fi
