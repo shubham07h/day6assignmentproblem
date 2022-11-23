@@ -1,14 +1,45 @@
-if [ $# -ne 1 ]
+echo "Enter a number"
+
+read num
+
+if [ $num -eq 1 ]
+
 then
-echo " Please pass the number as argument"
-exit
-fi
-n=$1
-h=0
-i=1
-while [ $i -le $n ]
+
+echo "1 is not a prime number"
+
+else
+
+i=2
+
+count=0
+
+while [ $i -lt $num ]
+
 do
-h=`expr $h + 1 / $i `
-i=`expr $i + 1 `
+
+if [ `expr $num % $i` -eq 0 ]
+
+then
+
+count=1
+
+fi
+
+i=`expr $i + 1`
+
 done
-echo " The nth harmonic number is: $h"
+
+if [ $count -eq 0 ]
+
+then
+
+echo "$num is a prime number"
+
+else
+
+echo "$num is not a prime number"
+
+fi
+
+fi
